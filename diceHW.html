@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiceJS</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Helvetica, sans-serif;
+        }
+
+        #dice {
+            font-size: 320px;
+        }
+
+        #dice:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Click on the emojis...</div>
+    <div id="dice" onclick="stopstart()"></div>
+    <script>
+        var dice;
+        
+        var dices = ['&#128127', '&#28127', '&#129324;', '&#129322;', '&#129297;', '&#128529;'];
+        var stopped = true;
+        var t;
+        
+            function change() {
+                var random = Math.floor(Math.random() * 6);
+                dice.innerHTML = dices[random];
+            }
+
+            function stopstart() {
+                if (stopped) {
+                    stopped = false;
+                    
+                    t = setInterval(change, 100);
+                } else {
+                    clearInterval(t);
+                    stopped = true;
+                }
+
+            }
+
+            window.onload = function () {
+                dice = document.getElementById("dice");
+                stopstart();
+            }
+        </script>
+    </body>
+    
+    </html>
